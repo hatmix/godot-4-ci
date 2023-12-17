@@ -1,6 +1,4 @@
 .import/
-.godot/
-.idea/
 .DS_Store
 exports/
 Exports/
@@ -8,4 +6,3 @@ Exports/
 *.png.import
 *.mkv
 *.mp4
-export_presets.cfg
