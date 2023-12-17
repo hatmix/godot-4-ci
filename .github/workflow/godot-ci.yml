@@ -1,0 +1,23 @@
+name: "godot-ci"
+on: push
+
+env:
+  GODOT_VERSION: 4.2.1
+  EXPORT_NAME: test-project
+  PROJECT_NAME: ${{ github.event.repository.name }}
+
+jobs:
+  gut-tests:
+    name: GUT Tests
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:${GODOT_VERSION}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Test
+        run: |
+          cd ${PROJECT_NAME}
+          godot -d --headless --path . -s addons/gut/gut_cmdln.gd -gexit
