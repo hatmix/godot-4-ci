@@ -19,5 +19,6 @@ jobs:
           lfs: true
       - name: Test
         run: |
-          cd ${PROJECT_NAME}
+          pwd
+          #cd ${PROJECT_NAME}
           godot -d --headless --path . -s addons/gut/gut_cmdln.gd -gexit
