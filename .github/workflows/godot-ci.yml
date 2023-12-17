@@ -17,11 +17,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           lfs: true
-      # https://github.com/bitwes/Gut/issues/301
-      - name: Generate Imports
-        run: godot --editor --path .
-        timeout-minutes: 2
-        continue-on-error: true
       - name: Test
         run: |
           pwd
