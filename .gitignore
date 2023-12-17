@@ -1,0 +1,11 @@
+.import/
+.godot/
+.idea/
+.DS_Store
+exports/
+Exports/
+*.import
+*.png.import
+*.mkv
+*.mp4
+export_presets.cfg
