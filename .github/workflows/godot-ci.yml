@@ -11,7 +11,7 @@ jobs:
     name: GUT Tests
     runs-on: ubuntu-20.04
     container:
-      image: barichello/godot-ci:${GODOT_VERSION}
+      image: barichello/godot-ci:4.2.1
     steps:
       - name: Checkout
         uses: actions/checkout@v2
