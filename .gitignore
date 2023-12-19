@@ -3,6 +3,6 @@
 exports/
 Exports/
 *.import
-*.png.import
 *.mkv
 *.mp4
+.godot/
