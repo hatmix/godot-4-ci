@@ -50,7 +50,7 @@ jobs:
 
       - name: Cache butler files
         id: cache-butler
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: butler
           key: ${{ runner.os }}-butler
