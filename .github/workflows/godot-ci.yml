@@ -17,6 +17,10 @@ jobs:
         with:
           lfs: true
 
+      - name: Install Plugins Fix Imports
+        run: |
+          godot --headless --path . -s plug.gd install || true
+
       - name: Fix Imports
         run: |
           godot --headless --path . --export-pack FixImports /dev/null 2>&1 >/dev/null

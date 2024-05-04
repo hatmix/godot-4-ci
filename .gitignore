@@ -7,3 +7,4 @@ Exports/
 *.mp4
 .godot/
 .plugged/
+.justfile
