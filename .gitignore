@@ -6,3 +6,4 @@ Exports/
 *.mkv
 *.mp4
 .godot/
+.plugged/
