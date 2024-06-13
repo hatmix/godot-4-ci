@@ -65,9 +65,11 @@ jobs:
           ITCHIO_USERNAME: ${{ secrets.ITCHIO_USERNAME }}
           ITCHIO_GAME: ${{ secrets.ITCHIO_GAME }}
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
-          EXPORT_TYPE: ${{ github.event.inputs.exporttype }}
+          EXPORT_TYPE_INPUT: ${{ github.event.inputs.exporttype }}
         if: steps.test.outcome == 'success' && env.ITCHIO_USERNAME && env.ITCHIO_GAME && env.BUTLER_API_KEY
         run: |
+          EXPORT_TYPE="${EXPORT_TYPE_INPUT:=debug}"
+          echo export $EXPORT_TYPE
           godot --headless --path . --export-${EXPORT_TYPE} "Web" exports/web/index.html
           godot --headless --path . --export-${EXPORT_TYPE} "Linux" exports/linux/${ITCHIO_GAME}.x86_64
           godot --headless --path . --export-${EXPORT_TYPE} "macOS" exports/macos/${ITCHIO_GAME}.zip
