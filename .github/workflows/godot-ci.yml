@@ -6,7 +6,7 @@ on:
       - '!ATTRIBUTION.md'
       - '.gitignore'
       - '.gitattributes'
-  workflow-dispatch:
+  workflow_dispatch:
     inputs:
       exporttype:
         description: 'Export type (debug/release)'
