@@ -99,7 +99,7 @@ jobs:
           ITCHIO_USERNAME: ${{ secrets.ITCHIO_USERNAME }}
           ITCHIO_GAME: ${{ secrets.ITCHIO_GAME }}
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
-        if: env.ITCHIO_USERNAME && env.ITCHIO_GAME && env.BUTLER_API_KEY && steps.export-web.outcome == 'success'
+        if: steps.export.outcome == 'success' && env.ITCHIO_USERNAME && env.ITCHIO_GAME && env.BUTLER_API_KEY
         run: |
           if [ -f exports/web/index.html ]; then
             ./butler push exports/web/ ${ITCHIO_USERNAME}/${ITCHIO_GAME}:HTML5
