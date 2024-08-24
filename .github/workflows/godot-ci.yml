@@ -52,9 +52,9 @@ jobs:
         run: |
           godot --headless --path . -s plug.gd install || true
 
-      #- name: Fix Imports
-      #  run: |
-      #    godot --headless --path . --export-pack FixImports /dev/null 2>&1 >/dev/null
+      - name: Fix Imports
+        run: |
+          godot --headless --path . --export-pack FixImports tmp.zip 2>&1 >/dev/null
 
       - name: Test
         id: test
