@@ -41,7 +41,7 @@ jobs:
 
       - name: Install Plugins
         run: |
-          godot --headless --audio-driver Dummy --display-driver x11 --rendering-driver opengl3 --screen 0 --verbose --path . -s plug.gd install production || true
+          godot --headless --audio-driver Dummy --display-driver x11 --rendering-driver opengl3 --screen 0 --verbose --path . -s plug.gd install
 
       - name: Fix Imports
         run: |
@@ -50,6 +50,10 @@ jobs:
       - name: Test
         run: |
           godot --headless --audio-driver Dummy --display-driver x11 --rendering-driver opengl3 --screen 0 --verbose --path . -s addons/gdUnit4/bin/GdUnitCmdTool.gd -a res://test
+
+      - name: Remove Dev-only Plugins
+        run: |
+          godot --headless --audio-driver Dummy --display-driver x11 --rendering-driver opengl3 --screen 0 --verbose --path . -s plug.gd install production || true
 
       - name: Setup Export Templates
         run: |
