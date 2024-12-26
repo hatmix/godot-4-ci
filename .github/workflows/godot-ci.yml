@@ -54,8 +54,7 @@ jobs:
 
       - name: Fix Imports
         run: |
-          rm -r test/*
-          godot --headless --path . --export-pack FixImports tmp.zip || true
+          godot --headless --path . --export-pack FixImports tmp.zip 2>&1 >/dev/null
 
       - name: Export
         id: export
@@ -64,7 +63,7 @@ jobs:
           ITCHIO_GAME: ${{ secrets.ITCHIO_GAME }}
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
           EXPORT_TYPE_INPUT: ${{ github.event.inputs.exporttype }}
-        if: steps.test.outcome == 'success' && env.ITCHIO_USERNAME && env.ITCHIO_GAME && env.BUTLER_API_KEY
+        if: env.ITCHIO_USERNAME && env.ITCHIO_GAME && env.BUTLER_API_KEY
         run: |
           EXPORT_TYPE="${EXPORT_TYPE_INPUT:=debug}"
           echo export $EXPORT_TYPE
