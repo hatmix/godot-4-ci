@@ -50,7 +50,7 @@ jobs:
 
       - name: Install Plugins
         run: |
-          godot --headless --path . -s plug.gd install production || true
+          godot --headless --path . -s plug.gd install || true
 
       - name: Fix Imports
         run: |
