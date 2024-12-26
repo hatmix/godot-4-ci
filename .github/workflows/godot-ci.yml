@@ -28,8 +28,34 @@ env:
   PROJECT_NAME: ${{ github.event.repository.name }}
 
 jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Install Plugins
+        run: |
+          godot --headless --path . -s plug.gd install production || true
+
+      - name: Fix Imports
+        run: |
+          godot --headless --path . --export-pack FixImports tmp.zip 2>&1 >/dev/null
+
+      - name: gdUnit4
+        uses: MikeSchulze/gdUnit4-action@v1.1.1
+        with:
+          godot-version: '4.3'
+          paths: |
+            res://project/test/
+          timeout: 5
+
   export:
     name: Export
+    needs: test
     runs-on: ubuntu-20.04
     container:
       image: barichello/godot-ci:4.3
