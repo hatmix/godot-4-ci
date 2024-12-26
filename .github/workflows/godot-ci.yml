@@ -39,13 +39,17 @@ jobs:
         with:
           lfs: true
 
+      - name: Godot --help Output
+        run: |
+          godot --headless --verbose --help
+
       - name: Install Plugins
         run: |
-          godot --headless --audio-driver Dummy --display-driver x11 --rendering-driver opengl3 --screen 0 --verbose --path . -s plug.gd install
+          godot --headless --path . -s plug.gd install
 
       - name: Fix Imports
         run: |
-          godot --headless --audio-driver Dummy --display-driver x11 --rendering-driver opengl3 --screen 0 --verbose --path . --export-pack FixImports tmp.zip 2>&1 >/dev/null
+          godot --headless --path . --export-pack FixImports tmp.zip 2>&1 >/dev/null
 
       - name: Test
         run: |
@@ -53,7 +57,7 @@ jobs:
 
       - name: Remove Dev-only Plugins
         run: |
-          godot --headless --audio-driver Dummy --display-driver x11 --rendering-driver opengl3 --screen 0 --verbose --path . -s plug.gd install production || true
+          godot --headless --path . -s plug.gd install production || true
 
       - name: Setup Export Templates
         run: |
