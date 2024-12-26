@@ -54,8 +54,7 @@ jobs:
 
       - name: Fix Imports
         run: |
-          # Remove test dir as addon not installed 
-	  rm -r test/*
+          rm -r test/*
           godot --headless --path . --export-pack FixImports tmp.zip 2>&1 >/dev/null
 
       - name: Export
