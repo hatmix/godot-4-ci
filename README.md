@@ -2,4 +2,4 @@
 
 Customization of [abarichello/godot-ci](https://github.com/abarichello/godot-ci) for my needs.
 
-Uses [imjp94/gd-plug](https://github.com/imjp94/gd-plug) to manage Godot plugins.
+Uses [MikeSchulze/gdUnit4](https://github.com/MikeSchulze/gdUnit4) for testing.
