@@ -35,7 +35,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Cache Godot files
+        id: cache-godot
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.local/share/godot/**
+            /usr/local/bin/godot
+          key: ${{ runner.os }}-godot-${{ env.GODOT_VERSION }}
+
       - name: Setup Godot
+        if: steps.cache-godot.outputs.cache-hit != 'true'
         run: |
           curl -LO https://github.com/godotengine/godot/releases/download/$GODOT_VERSION-stable/Godot_v$GODOT_VERSION-stable_linux.x86_64.zip
           unzip Godot_v$GODOT_VERSION-stable_linux.x86_64.zip
@@ -44,6 +54,7 @@ jobs:
           godot --version
 
       - name: Setup Export Templates
+        if: steps.cache-godot.outputs.cache-hit != 'true'
         run: |
           curl -LO https://github.com/godotengine/godot/releases/download/$GODOT_VERSION-stable/Godot_v$GODOT_VERSION-stable_export_templates.tpz
           mkdir -v -p ~/.local/share/godot/export_templates
