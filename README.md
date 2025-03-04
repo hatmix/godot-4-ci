@@ -8,8 +8,8 @@ This template includes Github actions for running tests and optionally deploying
 
 On succesful export, and if configured, the deploy workflow uses butler to deploy the game to itch.io. Setup these secrets in your Github repository to enable push:
 
-ITCHIO_USERNAME
-ITCHIO_GAME
-BUTLER_API_KEY
+ITCHIO_USERNAME  
+ITCHIO_GAME  
+BUTLER_API_KEY  
 
 Note that for butler uploads to work, the game page must already be created on Itch.io with one file manually uploaded. After that, butler can perform all the updates. (See butler's documentation)
