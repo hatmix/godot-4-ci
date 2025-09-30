@@ -10,10 +10,12 @@ on:
         options:
           - debug
           - release
-  workflow_run:
-    workflows: [Tests]
-    types: [completed]
-    branches: [main]
+  push:
+    paths-ignore:
+      - '**.md'
+      - '!ATTRIBUTION.md'
+      - '.gitignore'
+      - '.gitattributes'
 
 concurrency:
   group: there-can-be-only-one-export
