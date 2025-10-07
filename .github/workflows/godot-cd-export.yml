@@ -10,12 +10,10 @@ on:
         options:
           - debug
           - release
-  push:
-    paths-ignore:
-      - '**.md'
-      - '!ATTRIBUTION.md'
-      - '.gitignore'
-      - '.gitattributes'
+  workflow_run:
+    workflows: [Tests]
+    types: [completed]
+    branches: [main]
 
 concurrency:
   group: there-can-be-only-one-export
@@ -26,7 +24,7 @@ env:
   PROJECT_NAME: ${{ github.event.repository.name }}
 
 jobs:
-  export:
+  on-success:
     name: Export
     runs-on: ubuntu-22.04
     permissions:
