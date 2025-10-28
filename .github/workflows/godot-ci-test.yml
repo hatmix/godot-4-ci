@@ -32,12 +32,12 @@ jobs:
 
       - name: "Run Tests"
         uses: MikeSchulze/gdUnit4-action@v1.1.6
-          with:
-            godot-version: '4.5'
-            paths: 'res://test/'
-            timeout: 5
-            report-name: test_report.xml
-            arguments: '--verbose'
+        with:
+          godot-version: '4.5'
+          paths: 'res://test/'
+          timeout: 5
+          report-name: test_report.xml
+          arguments: '--verbose'
 
       - name: "Upload Unit Test Reports"
         if: ${{ always() }}
