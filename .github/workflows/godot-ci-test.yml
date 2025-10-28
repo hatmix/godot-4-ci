@@ -36,3 +36,15 @@ jobs:
           timeout: 5
           report-name: test_report.xml
           arguments: '--verbose'
+  report:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: "Publish Test Report"
+      if: ${{ always() }}
+      uses: dorny/test-reporter@v1.9.1
+      with:
+        artifact: "godot-version"
+        name: "test_report"
+        path: "**/reports/**/results.xml"
+        reporter: java-junit
