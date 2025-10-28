@@ -26,6 +26,7 @@ jobs:
       checks: write
       contents: write
     steps:
+      - name: "Run Tests"
       # checkout your repository
       - uses: actions/checkout@v4
       # run tests by using the gdUnit4-action with Godot version 4.x and the latest GdUnit4 release
@@ -36,6 +37,16 @@ jobs:
           timeout: 5
           report-name: test_report.xml
           arguments: '--verbose'
+
+      - name: "Upload Unit Test Reports"
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          path: |
+            reports/**
+            /var/lib/systemd/coredump/**
+            /var/log/syslog
+
   report:
     runs-on: ubuntu-latest
     steps:
