@@ -47,16 +47,3 @@ jobs:
             reports/**
             /var/lib/systemd/coredump/**
             /var/log/syslog
-
-  report:
-    runs-on: ubuntu-latest
-    steps:
-
-    - name: "Publish Test Report"
-      if: ${{ always() }}
-      uses: dorny/test-reporter@v1.9.1
-      with:
-        artifact: "godot-version"
-        name: "test_report"
-        path: "**/reports/**/results.xml"
-        reporter: java-junit
