@@ -1,6 +1,6 @@
 # Godot 4 CI
 
-A very tiny Godot 4.4 example project with Github workflows for continuous integration and continuous deployment.
+A very tiny Godot 4 example project with Github workflows for continuous integration and continuous deployment.
 
 Uses [MikeSchulze/gdUnit4](https://github.com/MikeSchulze/gdUnit4) for testing.
 
